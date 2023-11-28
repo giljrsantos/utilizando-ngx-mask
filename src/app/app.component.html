@@ -1,0 +1,213 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="form">
+        <h1>Fomulário de Cadastro</h1>
+        <div class="row">
+          <div class="mb-3 col-6">
+            <label for="input-cpf" class="form-label">
+              CPF
+            </label>
+            <input
+              [class.is-invalid]="
+                cpf.touched && cpf.invalid
+              "
+              [validation]="false"
+              formControlName="cpf"
+              autofocus
+              autocomplete="off"
+              type="text"
+              class="form-control"
+              id="input-cpf"
+              inputmode="numeric"
+              mask="000.000.000-00"
+              placeholder="Digite o CPF"
+            />
+
+            <div
+              *ngIf="cpf.errors?.['isCPF']"
+              class="invalid-feedback"
+            >
+              Informe um CPF válido
+            </div>
+            <div
+              *ngIf="cpf.errors?.['required']"
+              class="invalid-feedback"
+            >
+              Por favor, informe um CPF.
+            </div>
+          </div>
+          <div class="mb-3 col-6">
+            <label for="input-telefone" class="form-label">
+              Telefone
+            </label>
+            <input
+              autocomplete="off"
+              [class.is-invalid]="
+                telefone.touched && telefone.invalid
+              "
+              formControlName="telefone"
+              type="tel"
+              class="form-control"
+              id="input-telefone"
+              mask="(00) 0 0000-0000"
+              prefix="+55"
+              placeholder="Informe seu telefone"
+            />
+            <div
+              *ngIf="telefone.errors?.['required']"
+              class="invalid-feedback"
+            >
+              Por favor, informe um número de telefone.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-6">
+            <label for="input-ip" class="form-label">
+              IP
+            </label>
+            <input
+              autocomplete="off"
+              [class.is-invalid]="ip.touched && ip.invalid"
+              class="form-control"
+              formControlName="ip"
+              id="input-ip"
+              inputmode="numeric"
+              mask="IP"
+              placeholder="Informe o seu IP"
+              [dropSpecialCharacters]="false"
+            />
+            <div
+              *ngIf="ip.errors?.['required']"
+              class="invalid-feedback"
+            >
+              Por favor, informe um IP.
+            </div>
+          </div>
+          <div class="mb-3 col-6">
+            <label for="input-data" class="form-label">
+              Data
+            </label>
+            <input
+              autocomplete="off"
+              [class.is-invalid]="
+                data.touched && data.invalid
+              "
+              class="form-control"
+              formControlName="data"
+              id="input-data"
+              inputmode="numeric"
+              mask="d0/M0/0000"
+              placeholder="Informe a Data"
+            />
+            <div
+              *ngIf="data.errors?.['required']"
+              class="invalid-feedback"
+            >
+              Por favor, informe uma data no formato correto
+              dd/MM/yyyy
+            </div>
+            <div
+              *ngIf="data.errors?.['minDate']"
+              class="invalid-feedback"
+            >
+              Por favor, informe uma data no formato correto
+              dd/MM/yyyy
+            </div>
+          </div>
+        </div>
+        <h1>Informe os dados Veiculo</h1>
+        <div class="row">
+          <div class="mb-3 col-6">
+            <label for="input-renavam" class="form-label">
+              RENAVAM
+            </label>
+            <input
+              maxlength="11"
+              [class.is-invalid]="
+                renavam.touched && renavam.invalid
+              "
+              [validation]="false"
+              formControlName="renavam"
+              autocomplete="off"
+              class="form-control"
+              id="input-renavam"
+              inputmode="numeric"
+              mask="99999999999"
+              placeholder="Informe o RENAVAM"
+            />
+
+            <div
+              *ngIf="renavam.errors?.['required']"
+              class="invalid-feedback"
+            >
+              Por favor, informe RENAVAM.
+            </div>
+          </div>
+          <div class="mb-3 col-6">
+            <label for="input-placa" class="form-label">
+              Placa
+            </label>
+            <input
+              autocomplete="off"
+              [class.is-invalid]="
+                placa.touched && placa.invalid
+              "
+              formControlName="placa"
+              class="form-control"
+              id="input-placa"
+              mask="AAA-AAAA"
+              placeholder="Informe a Placa do seu Carro"
+            />
+            <div
+              *ngIf="placa.errors?.['required']"
+              class="invalid-feedback"
+            >
+              Por favor, informe a Placa do seu Carro.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-12">
+            <label for="input-descricao" class="form-label">
+              Descrição
+            </label>
+            <input
+              autocomplete="off"
+              [class.is-invalid]="
+                descricao.touched && descricao.invalid
+              "
+              formControlName="descricao"
+              autocomplete="off"
+              class="form-control"
+              id="input-ip"
+              placeholder="Informe a Descrição"
+            />
+            <div
+              *ngIf="descricao.errors?.['required']"
+              class="invalid-feedback"
+            >
+              Por favor, informe uma descrição.
+            </div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+          class="btn btn-primary"
+        >
+          Enviar
+        </button>
+      </form>
+
+      <div class="border border-primary m-4">
+        <pre class="p-4">
+                    <!-- <code>Valor do Formulário (form.value): {{ form.value | json }}</code> -->
+                </pre>
+      </div>
+    </div>
+  </div>
+</div>
